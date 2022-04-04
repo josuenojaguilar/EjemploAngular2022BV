@@ -27,7 +27,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link disabled" *ngIf="_usuarioService.getIdentidad()">{{ _usuarioService.getIdentidad().nombre }}</a>
         </li>
       </ul>
       <form class="d-flex">

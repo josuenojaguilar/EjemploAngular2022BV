@@ -12,15 +12,21 @@ export class ProductosService {
 
   constructor(public _http: HttpClient) { }
 
-  obtenerProductos() : Observable<any> {
+  obtenerProductos(token) : Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token )
 
-    return this._http.get(this.url + '/productos', { headers: this.headersVariable });
+    return this._http.get(this.url + '/productos', { headers: headersToken });
   }
 
   agregarProductos(modeloProductos: Productos) : Observable<any> {
     let parametros = JSON.stringify(modeloProductos);
 
     return this._http.post(this.url + '/agregarProductos', parametros, { headers: this.headersVariable });
+  }
+
+  eliminarProducto( idProducto ): Observable<any> {
+
+    return this._http.delete(this.url + '/eliminarProducto/' + idProducto, {headers: this.headersVariable})
   }
 
 }

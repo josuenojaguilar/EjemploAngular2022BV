@@ -14,7 +14,12 @@
             y el precio del producto es de: Q.{{ prod.precio }}
           </p>
         </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
+        <div class="card-footer bg-transparent border-success">
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" (click)="deleteProducto(prod._id)">Eliminar</button>
+            <button type="button" class="btn btn-warning">Editar</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
