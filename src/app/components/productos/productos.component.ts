@@ -14,6 +14,8 @@ export class ProductosComponent implements OnInit {
 
   public productosModelGet: Productos;
   public productosModelPost: Productos;
+  public productosModelGetId: Productos;
+
   public token;
   constructor(
     private _productosService: ProductosService,
@@ -27,8 +29,9 @@ export class ProductosComponent implements OnInit {
         idProveedor: ''
       }],
       0,
-      0)
-    this.token = this._usuarioService.getToken()
+      0);
+    this.productosModelGetId = new Productos('', '',[],[{ idProveedor: '' }], 0, 0);
+    this.token = this._usuarioService.getToken();
   }
 
   ngOnInit(): void {
@@ -43,6 +46,30 @@ export class ProductosComponent implements OnInit {
       },
       (error) => {
         console.log(<any>error);
+
+      }
+    )
+  }
+
+  getProductosId(idProducto){
+    this._productosService.obtenerProductoId(idProducto).subscribe(
+      (response)=>{
+        console.log(response);
+        this.productosModelGetId = response.producto;
+      },
+      (error)=>{
+
+      }
+    )
+  }
+
+  putProducto(){
+    this._productosService.editarProducto(this.productosModelGetId).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getProductos()
+      },
+      (error)=>{
 
       }
     )

@@ -18,10 +18,21 @@ export class ProductosService {
     return this._http.get(this.url + '/productos', { headers: headersToken });
   }
 
+  obtenerProductoId( idProducto ): Observable<any> {
+
+    return this._http.get(this.url + '/producto/' + idProducto, { headers: this.headersVariable})
+  }
+
   agregarProductos(modeloProductos: Productos) : Observable<any> {
     let parametros = JSON.stringify(modeloProductos);
 
     return this._http.post(this.url + '/agregarProductos', parametros, { headers: this.headersVariable });
+  }
+
+  editarProducto(modeloProductos: Productos) : Observable<any> {
+    let parametro = JSON.stringify(modeloProductos);
+
+    return this._http.put(this.url + '/editarProducto/' + modeloProductos._id, parametro, {headers: this.headersVariable})
   }
 
   eliminarProducto( idProducto ): Observable<any> {

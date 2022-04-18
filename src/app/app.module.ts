@@ -9,7 +9,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
+import { ChartsModule } from '@rinminase/ng-charts';
+import { GraficasComponent } from './components/graficas/graficas.component';
+import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegistroComponent,
     NavbarComponent,
-    ProductosComponent
+    ProductosComponent,
+    DetalleProductoComponent,
+    GraficasComponent,
+    InicioUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
