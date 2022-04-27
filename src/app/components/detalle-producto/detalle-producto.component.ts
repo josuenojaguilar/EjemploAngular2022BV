@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductosService } from 'src/app/services/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -9,6 +10,8 @@ import { ProductosService } from 'src/app/services/productos.service';
   providers: [ProductosService]
 })
 export class DetalleProductoComponent implements OnInit {
+  product;
+  load: boolean = false;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -23,15 +26,17 @@ export class DetalleProductoComponent implements OnInit {
   }
 
   getProductoId(idProducto){
-    this._productosService.obtenerProductoId(idProducto).subscribe(
-      (response)=>{
-        console.log(response);
-
+    this._productosService.obtenerProductoId(idProducto).subscribe({
+      next: (response)=>{
+        this.product = response.producto;
+        this.load = true;
       },
-      (error)=>{
-
-      }
-    )
+      error: (err)=> Swal.fire({
+        title: err.error.mensaje,
+        icon: 'error',
+        timer: 2000
+      })
+    })
   }
 
 }

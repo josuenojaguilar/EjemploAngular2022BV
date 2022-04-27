@@ -1,1 +1,14 @@
-<p>detalle-producto works!</p>
+<div class="card text-center m-4">
+    <h5 class="card-header">
+      Producto seleccionado:
+    </h5>
+    <div *ngIf="load" class="card-body">
+      <h5 class="card-title">{{ product.nombre }}</h5>
+      <p class="card-text">Cantidad: {{ product.cantidad }}</p>
+      <p class="card-text">Q: {{ product.precio }}</p>
+      <a href="#" class="btn btn-primary">Agregar al carrito</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>

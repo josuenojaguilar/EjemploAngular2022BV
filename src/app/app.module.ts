@@ -13,6 +13,7 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
 import { ChartsModule } from '@rinminase/ng-charts';
 import { GraficasComponent } from './components/graficas/graficas.component';
 import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
+import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuar
     ProductosComponent,
     DetalleProductoComponent,
     GraficasComponent,
-    InicioUsuarioComponent
+    InicioUsuarioComponent,
+    ActualizarUsuarioComponent
   ],
   imports: [
     BrowserModule,

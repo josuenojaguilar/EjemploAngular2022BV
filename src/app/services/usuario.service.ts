@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class UsuarioService {
 
   public url : String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
+  public headersToken = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.getToken()
+  })
   public token;
   public identidad;
 
@@ -23,6 +28,14 @@ export class UsuarioService {
     let params = JSON.stringify(usuario);
 
     return this._http.post(this.url + '/login', params, { headers: this.headersVariable });
+  }
+
+  register(params){
+    return this._http.post(environment.apiURL + '/registrar', params, { headers: this.headersVariable});
+  }
+
+  updateUser(id, params){
+    return this._http.put(environment.apiURL + '/editarUsuario/'+ id, params, {headers: this.headersToken});
   }
 
   getToken(){
