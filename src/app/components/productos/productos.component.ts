@@ -15,6 +15,7 @@ export class ProductosComponent implements OnInit {
   public productosModelGet: Productos;
   public productosModelPost: Productos;
   public productosModelGetId: Productos;
+  public search;
 
   public token;
   constructor(
@@ -75,14 +76,16 @@ export class ProductosComponent implements OnInit {
     )
   }
 
-  postProductos(){
+  postProductos(addProductForm){
     this._productosService.agregarProductos(this.productosModelPost).subscribe(
       (response)=>{
         console.log(response);
         this.getProductos();
-        this.productosModelPost.nombre = '';
+        /*this.productosModelPost.nombre = '';
         this.productosModelPost.cantidad = 0;
-        this.productosModelPost.precio = 0;
+        resetear solo 1 input -> this.productosModelPost.precio = 0;*/
+        addProductForm.reset();
+        
         Swal.fire({
           position: 'top-end',
           icon: 'success',
